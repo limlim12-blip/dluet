@@ -43,12 +43,11 @@ Key sections include:
 ### Usage & Makefile Commands
 A Makefile is provided to streamline common development and training operations. Run make help to view all available commands:
 ### Command	#scription
-- make help	Show all available Makefile shortcuts and descriptions
-- make train	Start model training using main.py
-- make resume	Resume training from a saved checkpoint path
-- make test	Run standard test suite (pytest -k "not slow")
-- make test-full	Run the complete test suite
-- make format	Run code formatting hooks (pre-commit)
-- make clean	Remove cache files, build artifacts, and coverage reports
-- make clean-logs	Clear local log files
+``` bash
+make help				# Show all available Makefile shortcuts and descriptions
+make train				# Start model training using main.py
+make resume				# Resume training from a saved checkpoint path
+make clean				# Remove cache files, build artifacts, and coverage reports
+make clean-logs				# Clear local log files
+```
 (Note: You can adjust the checkpoint path directly inside the Makefile under the resume target).
