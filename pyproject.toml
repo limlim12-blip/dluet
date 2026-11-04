@@ -1,0 +1,37 @@
+[project]
+name = "dluet"
+version = "0.1.0"
+readme = "README.md"
+requires-python = ">=3.12, <3.14"
+authors = [{ name = "lim", email = "lampham15009@gmail.com" }]
+dependencies = [
+  "fastparquet>=2026.9.0",
+  "matplotlib>=3.11.2",
+  "numpy",
+  "seaborn",
+  "pandas>=3.0.6",
+  "pyarrow>=26.0.0",
+  "scikit-learn>=1.9.1",
+  "tensorboardx>=2.6.5",
+  "torch>=2.0.0",
+  "torchmetrics>=0.11.4",
+  "torchvision>=0.15.0",
+  "tqdm>=4.70.1",
+  "cuml-cu12>=26.2",
+  "cudf-cu12>=26.2",
+  "umap-learn>=0.5.12",
+  "wandb",
+  "orjson>=3.13.0",
+]
+[[tool.uv.index]]
+name = "nvidia"
+url = "https://pypi.nvidia.com"
+explicit = true
+
+[tool.uv.sources]
+cuml-cu12 = { index = "nvidia" }
+cudf-cu12 = { index = "nvidia" }
+
+[project.scripts]
+eval_command = "src.eval:main"
+train_command = "src.train:main"

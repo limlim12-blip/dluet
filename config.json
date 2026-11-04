@@ -1,0 +1,46 @@
+{
+    "sweep":false,
+    "name": "limlim",
+    "n_gpu": 1,
+    "use_wandb": true,
+    "arch": {
+        "kernel_size": 3,
+        "dropout": 0.2,
+        "embedding_dim": 256,
+        "num_channels": [64, 128, 256, 256],
+        "num_sub_classes": 3,
+        "s": 32.0,
+        "m": 0.2,
+        "drop_center_prob": 0.3
+    },
+    "data_loader": {
+        "data_dir": "data/",
+        "batch_size": 100,
+        "validation_split": 0.05,
+        "num_workers": 4
+    },
+    "optimizer": {
+        "lr": 3e-3,
+        "weight_decay": 1e-4,
+        "amsgrad": false,
+        "fused":true
+    },
+    "lr_scheduler": {
+        "T_0": 25,
+        "eta_min": 1e-6,
+        "T_mult":2
+    },
+    "trainer": {
+        "compile":false,
+        "warmup_step": 5000,
+        "warmup_epochs": 5,
+        "epochs": 10000,
+        "len_epoch": 100,
+        "save_dir": "saved/",
+        "save_period": 1,
+        "verbosity": 2,
+        "monitor": "min val_loss",
+        "early_stop": 1000,
+        "tensorboard": true
+    }
+}

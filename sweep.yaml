@@ -1,0 +1,26 @@
+program: main.py
+method: bayes
+metric:
+  name: ep/acc_t/29
+  goal: maximize
+early_terminate:
+  type: hyperband
+  min_iter: 8
+parameters:
+  optimizer.lr:       {distribution: log_uniform_values, min: 0.0003, max: 0.0015}
+  optimizer.weight_decay: {distribution: uniform, min: 0.0, max: 0.0001}
+  arch.m:             {distribution: uniform, min: 0.0, max: 0.15}
+  arch.s:             {distribution: uniform, min: 15.0, max: 30.0}
+  arch.drop_center_prob: {values: [0.0, 0.1, 0.2]}
+  arch.num_sub_classes:  {values: [3, 5]}
+  trainer.epochs:     {value: 20}
+  trainer.len_epoch:  {value: 3000}
+  trainer.warmup_epochs: {value: 1}
+  lr_scheduler.T_0:   {value: 25}
+  lr_scheduler.T_mult: {value: 2}
+  lr_scheduler.eta_min: {value: 0.000001}
+  data_loader.batch_size: {value: 2048}
+  trainer.monitor:    {value: "max val_acc_t_mean"}
+  use_wandb:          {value: true}
+  n_gpu:              {value: 1}
+  sweep:              {value: true}
